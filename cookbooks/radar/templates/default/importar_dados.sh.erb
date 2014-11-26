@@ -1,15 +1,15 @@
-touch /home/vagrant/cookies.txt
+touch /home/<%= @server_user %>/cookies.txt
 LOGIN_URL=http://localhost/admin/
-USER='<%= @user %>'
+USERNAME='<%= @user %>'
 PASSWORD='<%= @password %>'
-COOKIES=/home/vagrant/cookies.txt
+COOKIES=/home/<%= @server_user %>/cookies.txt
 CURL_BIN="curl -s -c $COOKIES -b $COOKIES -e $LOGIN_URL"
 
 $CURL_BIN $LOGIN_URL > /dev/null
 DJANGO_TOKEN="csrfmiddlewaretoken=$(grep csrftoken $COOKIES | sed 's/^.*csrftoken\s*//')"
 
 $CURL_BIN \
-    -d "$DJANGO_TOKEN&username=$USER&password=$PASSWORD&this_is_the_login_form=1&next=/admin/" \
+    -d "$DJANGO_TOKEN&username=$USERNAME&password=$PASSWORD&this_is_the_login_form=1&next=/admin/" \
     -X POST $LOGIN_URL
 
 $CURL_BIN \
