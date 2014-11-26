@@ -109,6 +109,10 @@ package "vim" do
   action :install
 end
 
+package "curl" do
+  action :install
+end
+
 #
 # Variáveis de ambiente
 #
@@ -236,6 +240,54 @@ execute "migrate" do
   action :run
 end
 
+# Criar usuario para importar dados
+template "#{repo_folder}/radar_parlamentar/create_user.py" do
+  mode '777'
+  owner user
+  group user
+  source "create_user.py.erb"
+  variables({
+    :user => 'radar',
+    :password => node['radar']['database_user_password']
+  })
+end
+
+execute "create_user" do
+  command "#{venv_folder}/bin/python create_user.py"
+  environment ({"DJANGO_SETTINGS_MODULE" => "settings.production"})
+  cwd "#{repo_folder}/radar_parlamentar/"
+  user user
+  group user
+  action :run
+end
+
+file "#{repo_folder}/radar_parlamentar/create_user.py" do
+  action :delete
+end
+
+#
+# Importaçao de dados
+#
+
+template "#{home}/importar_dados.sh" do
+  mode '777'
+  owner user
+  group user
+  source "importar_dados.sh.erb"
+  variables({
+    :user => 'radar',
+    :password => node['radar']['database_user_password']
+  })
+end
+
+execute "importar_dados" do
+  command "sh importar_dados.sh"
+  cwd "#{home}"
+  user user
+  group user
+  action :run
+end
+
 #
 # Uwsgi
 #
@@ -251,7 +303,7 @@ directory uwsgi_log_folder do
 end
 
 template "/etc/init/uwsgi.conf" do
-  mode '0440'
+  mode '777'
   owner 'root'
   group 'root'
   source "uwsgi.conf.erb"

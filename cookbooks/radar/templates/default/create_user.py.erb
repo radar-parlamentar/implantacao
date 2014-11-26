@@ -1,0 +1,25 @@
+import os
+
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "settings.defaults")
+
+from django.contrib.auth.models import User
+
+if __name__ == "__main__":
+    try:
+        user = User.objects.create_user('<%= @user %>', '', '<%= @password %>')
+        user.is_staff = True
+        user.is_superuser = True
+        user.save()
+    except:
+        pass
+
+
+
+
+
+
+
+
+
+
+
