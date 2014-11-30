@@ -1,3 +1,3 @@
-cookbook_path "/home/msfernandes/implantacao/cookbooks"
-json_attribs "/home/msfernandes/chef/node.json"
+cookbook_path "/home/vagrant/implantacao/cookbooks"
+json_attribs "/home/vagrant/chef/node.json"
 
