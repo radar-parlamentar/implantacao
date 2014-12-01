@@ -86,8 +86,17 @@ template "/opt/sonar-runner-2.4/conf/sonar-runner.properties" do
   })
 end
 
+template "#{repo_folder}/radar_parlamentar/sonar-runner.sh" do
+  mode '0644'
+  source "sonar-runner.sh.erb"
+  variables({
+    :coverage => "#{venv_folder}/bin/coverage",
+    :venv => "#{venv_folder}"
+  })
+end
+
 execute "sonar-runner" do
-  command ". #{venv_folder}/bin/activate && sh sonar-runner.sh"
-  cwd "#{repo_folder}/radar_parlamentar/"
+  command "sh sonar-runner.sh"
+  cwd "#{repo_folder}/radar_parlamentar"
   action :run
 end
