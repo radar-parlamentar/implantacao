@@ -1,0 +1,15 @@
+sonar.jdbc.username=<%= @user %>
+sonar.jdbc.password=<%= @password %>
+
+sonar.jdbc.url=jdbc:postgresql://localhost/sonar
+
+sonar.jdbc.maxActive=20
+sonar.jdbc.maxIdle=5
+sonar.jdbc.minIdle=2
+sonar.jdbc.maxWait=5000
+sonar.jdbc.minEvictableIdleTimeMillis=600000
+sonar.jdbc.timeBetweenEvictionRunsMillis=30000
+
+sonar.web.port: <%= @port %>
+
+sonar.notifications.delay=60

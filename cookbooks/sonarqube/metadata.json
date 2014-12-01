@@ -1,0 +1,31 @@
+{
+  "name": "sonarqube",
+  "version": "0.1.2",
+  "description": "Installs/Configures SonarQube",
+  "long_description": "Installs/Configures SonarQube",
+  "maintainer": "Peter Halliday",
+  "maintainer_email": "pghalliday@gmail.com",
+  "license": "MIT",
+  "platforms": {
+    "ubuntu": ">= 0.0.0",
+    "centos": ">= 0.0.0"
+  },
+  "dependencies": {
+  },
+  "recommendations": {
+  },
+  "suggestions": {
+  },
+  "conflicting": {
+  },
+  "providing": {
+  },
+  "replacing": {
+  },
+  "attributes": {
+  },
+  "groupings": {
+  },
+  "recipes": {
+  }
+}
