@@ -1,0 +1,10 @@
+#!/bin/bash
+find . -type f -name "*.pyc" -exec rm -rf "{}" \;
+
+source <%= @venv %>/bin/activate
+
+<%= @coverage %> erase
+<%= @coverage %> run --source='.' manage.py test modelagem analises exportadores importadorInterno importadores testes_integracao
+<%= @coverage %> xml -o sonar/reports/coverage.xml
+
+sudo /opt/sonar-runner-2.4/bin/sonar-runner
