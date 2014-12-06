@@ -56,7 +56,7 @@ postgresql_database_user 'radar' do
 end
 
 template "#{home}/.pgpass" do
-  mode '0600'
+  mode '0777'
   owner user
   group user
   source "pgpass.erb"

@@ -8,6 +8,7 @@ end
 
 jenkins_job 'radar' do
 	config xml
+	action :create
 end	
 
 
