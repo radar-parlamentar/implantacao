@@ -1,0 +1,23 @@
+{
+    "postgresql": {
+        "password": {
+            "postgres": "123mudar"
+        },
+        "client": {
+            "packages": ["postgresql-client-common"]
+        }
+    },
+    "radar": {
+        "user": "vagrant",
+        "database_user_password": "123mudar"
+    },
+     "jenkins": {
+        "master": {
+	   "install_method": "package"	
+	}
+    },
+
+    //"run_list": ["recipe[postgresql::server]", "recipe[postgresql::client]", "recipe[radar]", "recipe[jenkins::master]", "recipe[radar::jenkins]"]
+    "run_list": ["recipe[radar::jenkins]"] 
+}
+
