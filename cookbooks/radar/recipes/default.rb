@@ -65,6 +65,8 @@ end
 # Instala e configura Postgresql como a base de dados "radar"
 #
 
+include_recipe "postgresql::server"
+include_recipe "postgresql::client"
 include_recipe "database::postgresql"
 
 postgresql_database 'radar' do
