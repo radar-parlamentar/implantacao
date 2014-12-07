@@ -14,6 +14,54 @@ uwsgi_log_folder = "/var/log/"
 uwsgi_log_file = "/var/log/uwsgi.log"
 
 #
+# Instalando pacotes
+#
+
+package "python-pip" do
+  action :install
+end
+
+package "libpq-dev" do
+  action :install
+end
+
+package "python-dev" do
+  action :install
+end
+
+package "git" do
+  action :install
+end
+
+package "nginx" do
+  action :install
+end
+
+package "python-virtualenv" do
+  action :install
+end
+
+package "tmux" do
+  action :install
+end
+
+package "postgresql-contrib" do
+  action :install
+end
+
+package "uwsgi-plugin-python" do
+  action :install
+end
+
+package "vim" do
+  action :install
+end
+
+package "curl" do
+  action :install
+end
+
+#
 # Instala e configura Postgresql como a base de dados "radar"
 #
 
@@ -63,54 +111,6 @@ template "#{home}/.pgpass" do
   variables({
     :senha => node[:postgresql][:password][:postgres]
   })
-end
-
-#
-# Instalando pacotes
-#
-
-package "python-pip" do
-  action :install
-end
-
-package "libpq-dev" do
-  action :install
-end
-
-package "python-dev" do
-  action :install
-end
-
-package "git" do
-  action :install
-end
-
-package "nginx" do
-  action :install
-end
-
-package "python-virtualenv" do
-  action :install
-end
-
-package "tmux" do
-  action :install
-end
-
-package "postgresql-contrib" do
-  action :install
-end
-
-package "uwsgi-plugin-python" do
-  action :install
-end
-
-package "vim" do
-  action :install
-end
-
-package "curl" do
-  action :install
 end
 
 #
