@@ -14,7 +14,7 @@
   <builders>
     <hudson.tasks.Shell>
       <command>
-cd /home/vagrant/implantacao/ &amp;&amp; chef-solo -c solo.rb</command>
+bash -l -c &quot;source <%= @venv_folder %>/bin/activate &amp;&amp; fab -f <%= @home %>/fabfile.py localhost deploy &quot;</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers/>

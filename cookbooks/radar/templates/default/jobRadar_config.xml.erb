@@ -33,15 +33,15 @@
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Shell>
-      <command>bash -l -c &quot;source /home/vagrant/radar/venv_radar/bin/activate &amp;&amp; pip install -r requirements.txt&quot;</command>
+      <command>bash -l -c &quot;source <%= @venv_folder %>/bin/activate &amp;&amp; pip install -r requirements.txt&quot;</command>
     </hudson.tasks.Shell>
     <hudson.tasks.Shell>
-      <command>bash -l -c &quot;source /home/vagrant/radar/venv_radar/bin/activate &amp;&amp; cd radar_parlamentar &amp;&amp; source tests.sh&quot;</command>
+      <command>bash -l -c &quot;source <%= @venv_folder %>/bin/activate &amp;&amp; cd radar_parlamentar &amp;&amp; source tests.sh&quot;</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers>
     <hudson.tasks.BuildTrigger>
-      <childProjects>teste_chef</childProjects>
+      <childProjects>deploy_radar</childProjects>
       <threshold>
         <name>SUCCESS</name>
         <ordinal>0</ordinal>
