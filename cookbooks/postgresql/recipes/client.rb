@@ -19,6 +19,10 @@ if platform_family?('debian') && node['postgresql']['version'].to_f > 9.3
   node.default['postgresql']['enable_pgdg_apt'] = true
 end
 
+node['postgresql']['client']['packages'].each do |pg_pack|
+  package pg_pack
+end
+
 if(node['postgresql']['enable_pgdg_apt']) and platform_family?('debian')
   include_recipe 'postgresql::apt_pgdg_postgresql'
 end
@@ -27,6 +31,4 @@ if(node['postgresql']['enable_pgdg_yum']) and platform_family?('rhel')
   include_recipe 'postgresql::yum_pgdg_postgresql'
 end
 
-node['postgresql']['client']['packages'].each do |pg_pack|
-  package pg_pack
-end
+

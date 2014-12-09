@@ -97,8 +97,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     # You may also specify custom JSON attributes:
     chef.json = {
       "postgresql" => {
-        "password" => { "postgres" => "123mudar" },
-        "client" => { "packages" => ["postgresql-client-common"] }
+        "password" => { "postgres" => "123mudar" }
       },
       "radar" => {
         "user" => "vagrant",
