@@ -1,3 +1,7 @@
-cookbook_path "/home/vagrant/implantacao/cookbooks"
-json_attribs "/home/vagrant/chef/node.json"
+cookbook_path "/home/radar/implantacao/cookbooks"
+
+json_attribs "/home/radar/implantacao/node.json"
+
+
+
 
