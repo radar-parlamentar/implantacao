@@ -1,29 +1,33 @@
 {
-    "postgresql": {
-        "password": {
-            "postgres": "123mudar"
-        },
-        "client": {
-            "packages": ["postgresql-client-common"]
-        }
-    },
-    "radar": {
-        "user": "radar",
-        "database_user_password": "123mudar",
-	"server_password": "123456"
-    },
-     "jenkins": {
-        "master": {
-	   "install_method": "package"	
-	}
-    },
-    "sonar": {
-	"user": "sonar",
-	"password": "sonar",
-	"port": "9300"
-    },
-
-    "run_list": ["recipe[postgresql::server]", "recipe[postgresql::client]", "recipe[radar]", "recipe[jenkins::master]", "recipe[radar::jenkins]", "recipe[sonarqube]","recipe[radar::sonar]"]
-    //"run_list": ["recipe[radar::jenkins]"] 
+   "postgresql":{
+      "password":{
+         "postgres":"123mudar"
+      }
+   },
+   "radar":{
+      "user":"radar",
+      "database_user_password":"123mudar",
+      "server_password":"123456"
+   },
+   "jenkins":{
+      "master":{
+         "install_method":"package"
+      }
+   },
+   "sonar":{
+      "user":"sonar",
+      "password":"sonar",
+      "port":"9300"
+   },
+   "run_list":[
+      "recipe[postgresql::server]",
+      "recipe[postgresql::client]",
+      "recipe[radar]",
+      "recipe[jenkins::master]",
+      "recipe[radar::jenkins]",
+      "recipe[sonarqube]",
+      "recipe[radar::sonar]"
+   ]
 }
+
 
