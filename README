@@ -22,6 +22,8 @@ Execute "sudo chef-solo -c chef-solo/solo.rb"
 Para instalar o Radar em uma VM local usando o Vagrant (versão 1.4.3), siga os passos abaixo:
 
 Instalar VirtualBox
+Instalar o Vagrant
+Instalar o plugin vagrant-omnibus (vagrant plugin install vagrant-omnibus)
 
 Baixar imagem base:
 vagrant box add ubuntu12.04-chef11 http://mirror.hdcore.eu/vagrant/boxes/ubuntu-12.04.2-i386-chef-11-omnibus.box
