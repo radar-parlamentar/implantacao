@@ -3,7 +3,8 @@ Description
 
 Installs Radar Parlamentar
 
-Target: Linux 3.13.0-34-generic #60-Ubuntu SMP x86_64 GNU/Linux
+Target: Linux 3.13.0-34-generic #60-Ubuntu SMP x86_64 GNU/Linux, Ubuntu 12.04
+Requires Chef 11.16
 
 Main sources:
 * https://uwsgi.readthedocs.org/en/latest/tutorials/Django_and_nginx.html
