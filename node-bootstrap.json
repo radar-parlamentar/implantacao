@@ -1,0 +1,18 @@
+{
+   "jenkins":{
+      "master":{
+         "install_method":"package"
+      }
+   },
+   "sonar":{
+      "user":"sonar",
+      "password":"sonar",
+      "port":"9300"
+   },
+   "run_list":[
+      "recipe[jenkins::master]",
+      "recipe[sonarqube]",
+   ]
+}
+
+

@@ -2,21 +2,27 @@
 O Chef é um sistema para automatizar a implantação de sistemas.
 A pasta cookbooks/radar contém uma receita Chef que automatiza a implantação do Radar.
 
-Você pode utilizar essa receita para implantar o Radar em um servidor ou em uma VM local.
+Você pode utilizar essa receita para implantar o Radar em produção ou em uma VM local para testes.
 
+
+Implantação do Radar em produção
 =============
 
-Para instalar o Radar usando a receita Chef em um servidor, siga os passos a baixo:
+Esse procedimento instala o Jenkins (Servidor de Integração Contínua) e o Sonar (análise do código).
+A cada commit no repositório do Radar, o Servidor de Integração Contínua irá testar o código.
+Se os testes passarem, o Radar é implantado e o Sonar analisa o código do Radar.
 
-Em $HOME/chef-solo copie todos os arquivos desta pasta (inclusive a pasta cookbooks e todo seu conteúdo).
-Execute install_chef.sh
-Edite chef-solo/node.json para editar as configurações da implantação.
-Edite chef-solo/solo.rb para configurar adequadamente os atributos 
+Procedimentos:
+Em $HOME/chef-solo copie todos os arquivos deste repositório.
+Execute install_chef.sh.
+Edite os arquivos node-bootstrap e node.json para editar as configurações da implantação.
+Edite solo.rb para configurar adequadamente os atributos 
  * cookbook_path (deve apontar para a pasta cookbooks) e 
  * json_attribs (deve apontar para node.json).
-Execute "sudo chef-solo -c chef-solo/solo.rb"
+Execute "cd ~/chef-solo; sudo chef-solo -c solo.rb -j node-bootstrap.json"
 
 
+Implantação do Radar numa VM local (para testes na máquina do desenvolvedor)
 ==============
 
 Para instalar o Radar em uma VM local usando o Vagrant, siga os passos abaixo:
