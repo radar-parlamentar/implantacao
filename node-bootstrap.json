@@ -4,6 +4,9 @@
          "install_method":"package"
       }
    },
+   "radar":{
+      "user":"radar"
+   },
    "sonar":{
       "user":"sonar",
       "password":"sonar",

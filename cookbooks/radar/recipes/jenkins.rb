@@ -9,7 +9,13 @@ venv_folder = "#{home}/venv_jenkins"
 
 jenkins_plugin 'git'
 
-xml_radar = File.join(Chef::Config[:file_cache_path], 'jobRadar_config.xml')
+python_virtualenv "#{venv_folder}" do
+  owner user
+  group user
+  action :create
+end
+
+xml_build = File.join(Chef::Config[:file_cache_path], 'jobRadar_config.xml')
 
 template xml_build do
   source 'jobBuildRadar_config.xml.erb'
