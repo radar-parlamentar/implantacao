@@ -13,14 +13,14 @@ A cada commit no repositório do Radar, o Servidor de Integração Contínua ir�
 Se os testes passarem, o Radar é implantado e o Sonar analisa o código do Radar.
 
 Procedimentos:
-Em $HOME/chef-solo copie todos os arquivos deste repositório.
+Copie este repositório para o ambiente alvo.
 Execute install_chef.sh.
 Edite os arquivos node-bootstrap e node.json para editar as configurações da implantação.
 Edite solo.rb para configurar adequadamente os atributos 
  * cookbook_path (deve apontar para a pasta cookbooks) e 
  * json_attribs (deve apontar para node.json).
-Execute "cd ~/chef-solo; sudo chef-solo -c solo.rb -j node-bootstrap.json"
-
+Execute "sudo chef-solo -c solo.rb -j node-bootstrap.json"
+Após essa execução, o Jenkins estará disponível no servidor de produção sob a porta 8080.
 
 Implantação do Radar numa VM local (para testes na máquina do desenvolvedor)
 ==============

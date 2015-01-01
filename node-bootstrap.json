@@ -11,7 +11,8 @@
    },
    "run_list":[
       "recipe[jenkins::master]",
-      "recipe[sonarqube]",
+      "recipe[radar::jenkins]",
+      "recipe[sonarqube]"
    ]
 }
 
