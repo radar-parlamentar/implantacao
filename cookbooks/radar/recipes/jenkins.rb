@@ -9,6 +9,14 @@ venv_folder = "#{home}/venv_jenkins"
 
 jenkins_plugin 'git'
 
+package "python-pip" do
+  action :install
+end
+
+package "python-virtualenv" do
+  action :install
+end
+
 python_virtualenv "#{venv_folder}" do
   owner user
   group user
