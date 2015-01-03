@@ -17,9 +17,17 @@ package "python-virtualenv" do
   action :install
 end
 
+package "libpq-dev" do
+  action :install
+end
+
+package "python-dev" do
+  action :install
+end
+
 python_virtualenv "#{venv_folder}" do
-  owner user
-  group user
+  owner 'jenkins'
+  group 'jenkins'
   action :create
 end
 
