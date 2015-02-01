@@ -5,7 +5,7 @@
       }
    },
    "radar":{
-      "user":"radar",
+      "linux_user":"radar",
       "database_user_password":"123mudar",
       "server_password":"123456"
    },

@@ -2,7 +2,7 @@
 # Author: Leonardo Leite (2014)
 # Receita de instalação do Radar Parlamentar
 
-user = node['radar']['user']
+user = node['radar']['linux_user']
 home = "/home/#{user}"
 radar_folder = "#{home}/radar"
 repo_folder = "#{home}/radar/repo"

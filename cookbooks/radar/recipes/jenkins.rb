@@ -2,7 +2,7 @@
 # Author:
 # Receita de Configuração do Jenkins
 
-user = node['radar']['user']
+user = node['radar']['linux_user']
 password = node['radar']['server_password']
 home = "/home/#{user}"
 solo_file = "#{home}/implantacao/solo.rb"
