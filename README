@@ -13,7 +13,7 @@ A cada commit no repositório do Radar, o Servidor de Integração Contínua ir�
 Se os testes passarem, o Radar é implantado e o Sonar analisa o código do Radar.
 
 Procedimentos:
-Copie este repositório para o ambiente alvo.
+Copie este repositório para o home do ambiente alvo.
 Execute install_chef.sh.
 Edite os arquivos node-bootstrap e node.json para editar as configurações da implantação.
 Edite solo.rb para configurar adequadamente os atributos 

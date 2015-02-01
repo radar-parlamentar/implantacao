@@ -5,6 +5,7 @@
 user = node['radar']['user']
 password = node['radar']['server_password']
 home = "/home/#{user}"
+solo_file = "#{home}/implantacao/solo.rb"
 venv_folder = "#{home}/venv_jenkins"
 
 jenkins_plugin 'git'
@@ -51,7 +52,9 @@ template xml_deploy do
   source 'jobDeployRadar_config.xml.erb'
   variables ({
     :home => home,
-    :venv_folder => venv_folder
+    :venv_folder => venv_folder,
+    :user => user,
+    :solo_file => solo_file
   })
 end
 
@@ -74,5 +77,10 @@ jenkins_job 'deploy_radar' do
   action :create
 end
 
+# make jenkins sudo without password
+template '/etc/sudoers' do
+  source 'sudoers.erb'
+end
 
 jenkins_command "safe-restart" 
+

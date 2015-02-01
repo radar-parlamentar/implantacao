@@ -14,7 +14,7 @@
   <builders>
     <hudson.tasks.Shell>
       <command>
-bash -l -c &quot;source <%= @venv_folder %>/bin/activate &amp;&amp; fab -f <%= @home %>/fabfile.py localhost deploy &quot;</command>
+bash -l -c &quot; sudo su <%= @user %>; source <%= @venv_folder %>/bin/activate; sudo chef-solo -c <%= @solo_file %> &quot;</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers/>
