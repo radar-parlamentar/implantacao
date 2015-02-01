@@ -15,12 +15,12 @@ Se os testes passarem, o Radar é implantado e o Sonar analisa o código do Rada
 Procedimentos:
 Copie este repositório para o home do ambiente alvo.
 Execute install_chef.sh.
-Edite os arquivos node-bootstrap e node.json para editar as configurações da implantação.
-Edite solo.rb para configurar adequadamente os atributos 
- * cookbook_path (deve apontar para a pasta cookbooks) e 
- * json_attribs (deve apontar para node.json).
-Execute "sudo chef-solo -c solo.rb -j node-bootstrap.json"
+Execute ./config.sh passando como argumento o nome do usuário do sistema operacional.
+Esse usuário deve ter poderes de sudo sem precisar digitar a senha.
+Senhas devem ser alteradas no arquivo node.json.
+Execute "sudo chef-solo -c solo.rb -j node-bootstrap.json".
 Após essa execução, o Jenkins estará disponível no servidor de produção sob a porta 8080.
+Em algum tempo os jobs do Jenkins (buid_radar e deploy_radar) serão executados.
 
 Implantação do Radar numa VM local (para testes na máquina do desenvolvedor)
 ==============
