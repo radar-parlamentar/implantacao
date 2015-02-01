@@ -193,7 +193,7 @@ end
 
 python_pip "" do
   virtualenv "#{venv_folder}"
-  options "-r #{repo_folder}/requirements.txt"
+  options "-r #{repo_folder}/radar_parlamentar/requirements.txt"
 end
 
 directory "#{cache_folder}" do

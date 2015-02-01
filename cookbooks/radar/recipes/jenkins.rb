@@ -58,20 +58,6 @@ template xml_deploy do
   })
 end
 
-python_pip "fabric" do
-  virtualenv "#{venv_folder}"
-end
-
-template "#{home}/fabfile.py" do
-  source "fabfile.py.erb"
-  variables ({
-    :user => user,
-    :password => password,
-    :home => home
-  })
-end
-
-
 jenkins_job 'deploy_radar' do 
   config xml_deploy
   action :create
