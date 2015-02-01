@@ -9,6 +9,11 @@
       "database_user_password":"123mudar",
       "server_password":"123456"
    },
+   "sonar":{
+      "user":"sonar",
+      "password":"sonar",
+      "port":"9300"
+   },   
    "run_list":[
       "recipe[radar::default]",
       "recipe[radar::sonar]"
