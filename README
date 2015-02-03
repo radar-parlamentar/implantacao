@@ -18,7 +18,7 @@ Execute install_chef.sh.
 Execute ./config.sh passando como argumento o nome do usuário do sistema operacional.
 Esse usuário deve ter poderes de sudo sem precisar digitar a senha.
 Senhas devem ser alteradas no arquivo node.json.
-Execute "sudo chef-solo -c solo.rb -j node-bootstrap.json".
+Execute o script bootstrap.sh.
 Após essa execução, o Jenkins estará disponível no servidor de produção sob a porta 8080.
 Em algum tempo os jobs do Jenkins (buid_radar e deploy_radar) serão executados.
 
