@@ -318,7 +318,7 @@ template "#{home}/importar_dados.sh" do
   variables({
     :user => 'radar',
     :password => node['radar']['database_user_password'],
-    :server_user => node['radar']['user']
+    :server_user => node['radar']['linux_user']
   })
 end
 
