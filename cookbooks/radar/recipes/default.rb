@@ -127,7 +127,7 @@ template "#{home}/.profile" do
 end
 
 #
-# Arquivos de configuração
+# Código e configuração do Radar
 #
 
 directory "#{radar_folder}" do
@@ -136,46 +136,6 @@ directory "#{radar_folder}" do
   mode '0775'
   action :create
 end
-
-template "#{radar_folder}/radar_nginx.conf" do
-  mode '0440'
-  owner user
-  group user
-  source "radar_nginx.conf.erb"
-  variables({
-    :user => user,
-    :server_name => "localhost"
-  })
-end
-
-template "#{radar_folder}/radar_uwsgi.ini" do
-  mode '0440'
-  owner user
-  group user
-  source "radar_uwsgi.ini.erb"
-  variables({
-    :user => user
-  })
-end
-
-template "#{radar_folder}/uwsgi_params" do
-  mode '0440'
-  owner user
-  group user
-  source "uwsgi_params.erb"
-end
-
-link "/etc/nginx/sites-enabled/radar_nginx.conf" do
-  to "#{home}/radar/radar_nginx.conf"
-end
-
-file "/etc/nginx/sites-enabled/default" do
-  action :delete
-end
-
-#
-# Código e configuração do Radar
-#
 
 python_virtualenv "#{venv_folder}" do
   owner user
@@ -246,6 +206,23 @@ end
 # Uwsgi
 #
 
+template "#{radar_folder}/radar_uwsgi.ini" do
+  mode '0440'
+  owner user
+  group user
+  source "radar_uwsgi.ini.erb"
+  variables({
+    :user => user
+  })
+end
+
+template "#{radar_folder}/uwsgi_params" do
+  mode '0440'
+  owner user
+  group user
+  source "uwsgi_params.erb"
+end
+
 python_pip "uwsgi" do
 end
 
@@ -275,6 +252,25 @@ end
 #
 # Nginx
 #
+
+template "#{radar_folder}/radar_nginx.conf" do
+  mode '0440'
+  owner user
+  group user
+  source "radar_nginx.conf.erb"
+  variables({
+    :user => user,
+    :server_name => "localhost"
+  })
+end
+
+link "/etc/nginx/sites-enabled/radar_nginx.conf" do
+  to "#{home}/radar/radar_nginx.conf"
+end
+
+file "/etc/nginx/sites-enabled/default" do
+  action :delete
+end
 
 service "nginx" do
   action :restart
