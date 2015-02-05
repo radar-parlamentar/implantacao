@@ -2,7 +2,7 @@
 # Author: Matheus Souza Fernandes (2014)
 # Receita de instalação do SonarQube para o Radar Parlamentar
 
-user = node['radar']['user']
+user = node['radar']['linux_user']
 home = "/home/#{user}"
 repo_folder = "#{home}/radar/repo"
 venv_folder = "#{home}/radar/venv_radar"
