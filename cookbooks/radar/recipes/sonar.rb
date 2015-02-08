@@ -34,15 +34,15 @@ postgresql_connection_info = {
   :password => node['postgresql']['password']['postgres']
 }
 
-postgresql_database_user node["sonar"]["jdbc"]["user"] do
+postgresql_database_user node["sonarqube"]["jdbc"]["user"] do
   connection postgresql_connection_info
-  password node["sonar"]["jdbc"]["password"]
+  password node["sonarqube"]["jdbc"]["password"]
   action :create
 end
 
-postgresql_database_user node["sonar"]["jdbc"]["user"] do
+postgresql_database_user node["sonarqube"]["jdbc"]["user"] do
   connection postgresql_connection_info
-  password node["sonar"]["jdbc"]["password"]
+  password node["sonarqube"]["jdbc"]["password"]
   database_name 'sonar'
   privileges [:all]
   action :grant
@@ -55,9 +55,9 @@ template "/opt/sonarqube-4.4/conf/sonar.properties" do
   mode '0644'
   source "sonar.properties.erb"
   variables({
-    :user => node["sonar"]["user"],
-    :password => node["sonar"]["password"],
-    :port => node["sonar"]["port"]
+    :user => node["sonarqube"]["user"],
+    :password => node["sonarqube"]["password"],
+    :port => node["sonarqube"]["port"]
   })
 end
 
@@ -83,9 +83,9 @@ template "/opt/sonar-runner-2.4/conf/sonar-runner.properties" do
   mode '0644'
   source "sonar-runner.properties.erb"
   variables({
-    :user => node["sonar"]["user"],
-    :password => node["sonar"]["password"],
-    :port => node["sonar"]["port"]
+    :user => node["sonarqube"]["user"],
+    :password => node["sonarqube"]["password"],
+    :port => node["sonarqube"]["port"]
   })
 end
 
