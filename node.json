@@ -10,9 +10,15 @@
       "server_password":"123456"
    },
    "sonar":{
+      "version":"4.4",
       "user":"sonar",
       "password":"sonar",
-      "port":"9300"
+      "port":"9300",
+      "jdbc" : {
+          "user":"sonar",
+          "password":"sonar",
+          "url":"jdbc:postgresql://localhost/sonar"
+      }
    },   
    "run_list":[
       "recipe[radar::default]",

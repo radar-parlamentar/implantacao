@@ -34,19 +34,22 @@ postgresql_connection_info = {
   :password => node['postgresql']['password']['postgres']
 }
 
-postgresql_database_user node["sonar"]["user"] do
+postgresql_database_user node["sonar"]["jdbc"]["user"] do
   connection postgresql_connection_info
-  password node["sonar"]["password"]
+  password node["sonar"]["jdbc"]["password"]
   action :create
 end
 
-postgresql_database_user node["sonar"]["user"] do
+postgresql_database_user node["sonar"]["jdbc"]["user"] do
   connection postgresql_connection_info
-  password node["sonar"]["password"]
+  password node["sonar"]["jdbc"]["password"]
   database_name 'sonar'
   privileges [:all]
   action :grant
 end
+
+
+include_recipe "sonarqube"
 
 template "/opt/sonarqube-4.4/conf/sonar.properties" do
   mode '0644'
