@@ -21,7 +21,7 @@
       },   
       "user":"sonar",
       "password":"sonar",
-      "port":"9300",
+      "port":"9300"
    },
    "run_list":[
       "recipe[radar::default]",
