@@ -1,11 +1,11 @@
 # Name of nodes to start, here we have a single node
-CELERYD_NODES="w1"
+CELERYD_NODES="radar"
 
 # Where to chdir at start.
 CELERYD_CHDIR="<%= @repo_folder %>/radar_parlamentar"
 
 # Absolute or relative path to the 'celery' command:
-CELERY_BIN="<%= @venv_folder %>/celery"
+CELERY_BIN="<%= @venv_folder %>/bin/celery"
 
 # Extra arguments to celeryd
 CELERYD_OPTS="--concurrency=1"

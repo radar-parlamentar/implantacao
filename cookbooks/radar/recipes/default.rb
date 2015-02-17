@@ -303,7 +303,7 @@ template "/etc/init.d/celeryd" do
   source "celeryd.erb"
 end
 
-service "celery" do
+service "celeryd" do
   action :start
 end
 
