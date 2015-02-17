@@ -6,7 +6,7 @@ user = node['radar']['linux_user']
 home = "/home/#{user}"
 repo_folder = "#{home}/radar/repo"
 venv_folder = "#{home}/radar/venv_radar"
-
+sonar_version = node['sonarqube']['version']
 
 package "openjdk-7-jdk" do
   action :install
@@ -50,7 +50,7 @@ end
 
 include_recipe "sonarqube"
 
-template "/opt/sonarqube-4.4/conf/sonar.properties" do
+template "/opt/sonarqube-#{sonar_version}/conf/sonar.properties" do
   mode '0644'
   source "sonar.properties.erb"
   variables({
@@ -60,7 +60,7 @@ template "/opt/sonarqube-4.4/conf/sonar.properties" do
   })
 end
 
-remote_file "/opt/sonarqube-4.4/extensions/plugins/sonar-python-plugin-1.3.jar" do
+remote_file "/opt/sonarqube-#{sonar_version}/extensions/plugins/sonar-python-plugin-1.3.jar" do
   source "http://repository.codehaus.org/org/codehaus/sonar-plugins/python/sonar-python-plugin/1.3/sonar-python-plugin-1.3.jar"
   action :create_if_missing
 end
