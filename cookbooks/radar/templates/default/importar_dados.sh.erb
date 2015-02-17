@@ -14,10 +14,6 @@ $CURL_BIN \
 
 $CURL_BIN \
     -d "$DJANGO_TOKEN&..." \
-    -X POST http://localhost/importar/cdep/
-
-$CURL_BIN \
-    -d "$DJANGO_TOKEN&..." \
     -X POST http://localhost/importar/conv/
 
 $CURL_BIN \
@@ -27,5 +23,9 @@ $CURL_BIN \
 $CURL_BIN \
     -d "$DJANGO_TOKEN&..." \
     -X POST http://localhost/importar/sen/
+
+$CURL_BIN \
+    -d "$DJANGO_TOKEN&..." \
+    -X POST http://localhost/importar/cdep/
 
 rm $COOKIES
