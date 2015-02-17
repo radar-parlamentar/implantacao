@@ -33,10 +33,6 @@ package "git" do
   action :install
 end
 
-package "nginx" do
-  action :install
-end
-
 package "python-virtualenv" do
   action :install
 end
@@ -253,6 +249,10 @@ end
 # Nginx
 #
 
+package "nginx" do
+  action :install
+end
+
 template "#{radar_folder}/radar_nginx.conf" do
   mode '0440'
   owner user
@@ -276,8 +276,39 @@ service "nginx" do
   action :restart
 end
 
+#
+# Celery
+#
 
-# Criar usuario para importar dados
+package "rabbitmq-server" do
+  action :install
+end
+
+template "/etc/default/celeryd" do
+  mode '0444'
+  owner 'root'
+  group 'root'
+  source "celeryd.conf.erb"
+  variables({
+      :repo_folder => repo_folder,
+      :venv_folder => venv_folder,
+      :user => user         
+  })
+end
+
+template "/etc/init.d/celeryd" do
+  mode '0777'
+  owner 'root'
+  group 'root'
+  source "celeryd.erb"
+end
+
+service "celery" do
+  action :start
+end
+
+# Criar usuario para administrativo do Django (usado na importação dos dados via requisição web)
+
 template "#{repo_folder}/radar_parlamentar/create_user.py" do
   mode '777'
   owner user

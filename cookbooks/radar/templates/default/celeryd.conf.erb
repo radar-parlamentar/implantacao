@@ -1,0 +1,24 @@
+# Name of nodes to start, here we have a single node
+CELERYD_NODES="w1"
+
+# Where to chdir at start.
+CELERYD_CHDIR="<%= @repo_folder %>/radar_parlamentar"
+
+# Absolute or relative path to the 'celery' command:
+CELERY_BIN="<%= @venv_folder %>/celery"
+
+# Extra arguments to celeryd
+CELERYD_OPTS="--concurrency=1"
+
+# App instance to use
+# comment out this line if you don't use an app
+CELERY_APP="importadores"
+
+# Workers should run as an unprivileged user.
+CELERYD_USER="<%= @user %>"
+CELERYD_GROUP="<%= @user %>"
+
+# Name of the projects settings module.
+# in this case is just settings and not the full path because it will change the dir to
+# the project folder first.
+export DJANGO_SETTINGS_MODULE="settings.production"
