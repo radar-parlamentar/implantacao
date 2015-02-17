@@ -48,7 +48,6 @@ postgresql_database_user node["sonarqube"]["jdbc"]["user"] do
   action :grant
 end
 
-
 include_recipe "sonarqube"
 
 template "/opt/sonarqube-4.4/conf/sonar.properties" do

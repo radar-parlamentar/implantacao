@@ -8,7 +8,6 @@
       "linux_user":"radar"
    },
    "run_list":[
-      "recipe[jenkins::master]",
       "recipe[radar::jenkins]"
    ]
 }

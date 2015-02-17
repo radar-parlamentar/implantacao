@@ -8,6 +8,8 @@ home = "/home/#{user}"
 solo_file = "#{home}/implantacao/solo.rb"
 venv_folder = "#{home}/venv_jenkins"
 
+include_recipe "jenkins::master"
+
 jenkins_plugin 'git'
 
 package "python-pip" do
