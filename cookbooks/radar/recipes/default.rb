@@ -181,6 +181,13 @@ directory log_folder do
   action :create
 end
 
+file log_file do
+  owner user
+  group user
+  mode '0755'
+  action :create
+end
+
 execute "syncdb" do
   command "#{venv_folder}/bin/python manage.py syncdb --noinput"
   environment ({"DJANGO_SETTINGS_MODULE" => "settings.production"})
