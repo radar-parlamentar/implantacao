@@ -137,6 +137,7 @@ python_virtualenv "#{venv_folder}" do
   owner user
   group user
   action :create
+  options "--setuptools"
 end
 
 git "#{repo_folder}" do
