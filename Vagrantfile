@@ -101,6 +101,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       },
       "radar" => {
         "user" => "vagrant",
+        "linux_user" => "vagrant",
         "database_user_password" => "123mudar"
       }
     }
