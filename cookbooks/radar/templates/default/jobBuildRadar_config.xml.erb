@@ -33,10 +33,10 @@
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Shell>
-      <command>bash -l -c &quot;source <%= @venv_folder %>/bin/activate &amp;&amp; pip install -r radar_parlamentar/requirements.txt&quot;</command>
+      <command>sudo -u <%= @user %> bash -l -c &quot;source <%= @venv_folder %>/bin/activate &amp;&amp; pip install -r radar_parlamentar/requirements.txt&quot;</command>
     </hudson.tasks.Shell>
     <hudson.tasks.Shell>
-      <command>bash -l -c &quot;source <%= @venv_folder %>/bin/activate &amp;&amp; cd radar_parlamentar &amp;&amp; source tests.sh&quot;</command>
+      <command>sudo -u <%= @user %> bash -l -c &quot;source <%= @venv_folder %>/bin/activate &amp;&amp; cd radar_parlamentar &amp;&amp; source tests.sh&quot;</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers>

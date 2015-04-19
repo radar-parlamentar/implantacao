@@ -29,8 +29,8 @@ package "python-dev" do
 end
 
 python_virtualenv "#{venv_folder}" do
-  owner 'jenkins'
-  group 'jenkins'
+  owner #{user}
+  group #{user}
   action :create
 end
 
@@ -39,7 +39,8 @@ xml_build = File.join(Chef::Config[:file_cache_path], 'jobRadar_config.xml')
 template xml_build do
   source 'jobBuildRadar_config.xml.erb'
   variables ({
-    :venv_folder => venv_folder
+    :venv_folder => venv_folder,
+    :user => user
   })
 end
 
