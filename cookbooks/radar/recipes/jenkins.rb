@@ -29,8 +29,8 @@ package "python-dev" do
 end
 
 python_virtualenv "#{venv_folder}" do
-  owner #{user}
-  group #{user}
+  owner 'jenkins'
+  group 'jenkins'
   action :create
 end
 
