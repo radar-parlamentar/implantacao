@@ -137,6 +137,7 @@ python_virtualenv "#{venv_folder}" do
   owner user
   group user
   action :create
+  options "--setuptools"
 end
 
 git "#{repo_folder}" do
@@ -174,6 +175,13 @@ template "#{repo_folder}/radar_parlamentar/settings/production.py" do
 end
 
 directory log_folder do
+  owner user
+  group user
+  mode '0755'
+  action :create
+end
+
+file log_file do
   owner user
   group user
   mode '0755'
