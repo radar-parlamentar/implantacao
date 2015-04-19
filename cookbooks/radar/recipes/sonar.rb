@@ -98,7 +98,8 @@ template "#{repo_folder}/radar_parlamentar/sonar-runner.sh" do
 end
 
 execute "sonar-runner" do
-  command "source sonar-runner.sh"
+  command "bash sonar-runner.sh"
   cwd "#{repo_folder}/radar_parlamentar"
+  user "#{user}"
   action :run
 end
