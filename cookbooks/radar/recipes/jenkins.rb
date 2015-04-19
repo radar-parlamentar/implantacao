@@ -39,14 +39,15 @@ xml_build = File.join(Chef::Config[:file_cache_path], 'jobRadar_config.xml')
 template xml_build do
   source 'jobBuildRadar_config.xml.erb'
   variables ({
-    :venv_folder => venv_folder
+    :venv_folder => venv_folder,
+    :user => user
   })
 end
 
 jenkins_job 'build_radar' do
   config xml_build
   action :create
-end	
+end
 
 xml_deploy = File.join(Chef::Config[:file_cache_path], 'jobDeployRadar_config.xml')
 
@@ -60,7 +61,7 @@ template xml_deploy do
   })
 end
 
-jenkins_job 'deploy_radar' do 
+jenkins_job 'deploy_radar' do
   config xml_deploy
   action :create
 end
@@ -70,5 +71,4 @@ template '/etc/sudoers' do
   source 'sudoers.erb'
 end
 
-jenkins_command "safe-restart" 
-
+jenkins_command "safe-restart"
