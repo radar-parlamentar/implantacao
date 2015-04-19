@@ -97,6 +97,11 @@ template "#{repo_folder}/radar_parlamentar/sonar-runner.sh" do
   })
 end
 
+# apaga log gerado pelo jenkins (o arquivo pertencia ao root)
+file "#{repo_folder}/radar_parlamentar/radar.log" do
+  action :delete
+end
+
 execute "sonar-runner" do
   command "sh sonar-runner.sh"
   cwd "#{repo_folder}/radar_parlamentar"
