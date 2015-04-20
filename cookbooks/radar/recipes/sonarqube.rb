@@ -6,6 +6,14 @@ package "openjdk-7-jdk" do
   action :install
 end
 
+package "libpq-dev" do
+  action :install
+end
+
+package "postgresql-contrib" do
+  action :install
+end
+
 include_recipe "postgresql::client"
 include_recipe "postgresql::server"
 include_recipe "database::postgresql"

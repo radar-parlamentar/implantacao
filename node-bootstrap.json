@@ -18,12 +18,13 @@
           "user":"sonar",
           "password":"sonar",
           "url":"jdbc:postgresql://localhost/sonar"
-      },
-   },   
+      }
+   },
    "radar":{
       "linux_user":"radar"
    },
    "run_list":[
+      "recipe[apt]",
       "recipe[radar::jenkins]",
       "recipe[radar::sonarqube]"
    ]
