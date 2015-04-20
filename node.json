@@ -10,23 +10,13 @@
       "server_password":"123456"
    },
    "sonarqube" : {
-      "mirror":"http://dist.sonar.codehaus.org",
       "version":"4.4.1",
-      "checksum":"eb4f54151cd6d1a49295b2c7c76499d4",
-      "os_kernel":"linux-x86-64",
-      "jdbc" : {
-          "user":"sonar",
-          "password":"sonar",
-          "url":"jdbc:postgresql://localhost/sonar"
-      },   
       "user":"sonar",
       "password":"sonar",
       "port":"9300"
    },
    "run_list":[
       "recipe[radar::default]",
-      "recipe[radar::sonar]"
+      "recipe[radar::sonar-runner]"
    ]
 }
-
-

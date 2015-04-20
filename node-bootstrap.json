@@ -4,12 +4,27 @@
          "install_method":"package"
       }
    },
+   "postgresql":{
+      "password":{
+         "postgres":"123mudar"
+      }
+   },
+   "sonarqube" : {
+      "mirror":"http://dist.sonar.codehaus.org",
+      "version":"4.4.1",
+      "checksum":"eb4f54151cd6d1a49295b2c7c76499d4",
+      "os_kernel":"linux-x86-64",
+      "jdbc" : {
+          "user":"sonar",
+          "password":"sonar",
+          "url":"jdbc:postgresql://localhost/sonar"
+      },
+   },   
    "radar":{
       "linux_user":"radar"
    },
    "run_list":[
-      "recipe[radar::jenkins]"
+      "recipe[radar::jenkins]",
+      "recipe[radar::sonarqube]"
    ]
 }
-
-

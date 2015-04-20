@@ -1,54 +1,12 @@
 # License: GPL v3
 # Author: Matheus Souza Fernandes (2014)
-# Receita de instalação do SonarQube para o Radar Parlamentar
+# Receita de configuração do Sonar Runner para o Radar Parlamentar
 
 user = node['radar']['linux_user']
 home = "/home/#{user}"
 repo_folder = "#{home}/radar/repo"
 venv_folder = "#{home}/radar/venv_radar"
 sonar_version = node['sonarqube']['version']
-
-package "openjdk-7-jdk" do
-  action :install
-end
-
-postgresql_database 'sonar' do
-  connection(
-    :host     => 'localhost',
-    :port     => 5432,
-    :username => 'postgres',
-    :password => node['postgresql']['password']['postgres']
-  )
-  template 'DEFAULT'
-  encoding 'DEFAULT'
-  tablespace 'DEFAULT'
-  connection_limit '-1'
-  owner 'postgres'
-  action :create
-end
-
-postgresql_connection_info = {
-  :host     => 'localhost',
-  :port     => node['postgresql']['config']['port'],
-  :username => 'postgres',
-  :password => node['postgresql']['password']['postgres']
-}
-
-postgresql_database_user node["sonarqube"]["jdbc"]["user"] do
-  connection postgresql_connection_info
-  password node["sonarqube"]["jdbc"]["password"]
-  action :create
-end
-
-postgresql_database_user node["sonarqube"]["jdbc"]["user"] do
-  connection postgresql_connection_info
-  password node["sonarqube"]["jdbc"]["password"]
-  database_name 'sonar'
-  privileges [:all]
-  action :grant
-end
-
-include_recipe "sonarqube"
 
 template "/opt/sonarqube-#{sonar_version}/conf/sonar.properties" do
   mode '0644'
