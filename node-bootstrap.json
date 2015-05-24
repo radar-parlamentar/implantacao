@@ -1,8 +1,7 @@
 {
    "jenkins":{
       "master":{
-         "install_method":"package",
-         "senha":"123mudar"
+         "install_method":"package"
       }
    },
    "postgresql":{

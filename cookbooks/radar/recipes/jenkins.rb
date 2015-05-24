@@ -10,13 +10,6 @@ venv_folder = "#{home}/venv_jenkins"
 
 include_recipe "jenkins::master"
 
-jenkins_plugin 'credentials'
-
-jenkins_password_credentials 'radar' do
-  description 'Radar Parlamentar'
-  password    jenkins_password
-end
-
 jenkins_plugin 'git'
 
 package "python-pip" do
