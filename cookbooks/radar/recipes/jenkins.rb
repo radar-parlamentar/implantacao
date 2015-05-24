@@ -3,12 +3,19 @@
 # Receita de Configuração do Jenkins
 
 user = node['radar']['linux_user']
-password = node['radar']['server_password']
+jenkins_password = node['jenkins']['master']['senha']
 home = "/home/#{user}"
 solo_file = "#{home}/implantacao/solo.rb"
 venv_folder = "#{home}/venv_jenkins"
 
 include_recipe "jenkins::master"
+
+jenkins_plugin 'credentials'
+
+jenkins_password_credentials 'radar' do
+  description 'Radar Parlamentar'
+  password    jenkins_password
+end
 
 jenkins_plugin 'git'
 
