@@ -16,7 +16,6 @@
       "port":"9300"
    },
    "run_list":[
-      "recipe[radar::default]",
-      "recipe[radar::sonar-runner]"
+      "recipe[radar::default]"
    ]
 }

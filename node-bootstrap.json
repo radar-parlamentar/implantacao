@@ -25,7 +25,6 @@
    },
    "run_list":[
       "recipe[apt]",
-      "recipe[radar::jenkins]",
-      "recipe[radar::sonarqube]"
+      "recipe[radar::jenkins]"
    ]
 }
