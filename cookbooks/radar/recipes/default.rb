@@ -378,3 +378,27 @@ execute "importar_dados" do
   action :run
 end
 
+#
+# Rotinas periódicas do Radar
+#
+
+cron "cache-analises" do
+  action :create 
+  minute '0'
+  hour '1'
+  user user
+  command '{ $SHELL clear-cache.sh && $SHELL cache-analises.sh; } >> #{log_folder}/radar-cron.log 2>&1'
+end
+
+cron "dump-db" do
+  action :create 
+  minute '0'
+  hour '4'
+  weekday '1'
+  user user
+  command 'source ~/.profile; source dump-radar.sh >> #{log_folder}/radar-cron.log 2>>&1'
+end
+
+
+
+
