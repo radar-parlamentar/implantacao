@@ -12,6 +12,7 @@ log_folder = "/var/log/radar"
 log_file = "#{log_folder}/radar.log"
 uwsgi_log_folder = "/var/log/"
 uwsgi_log_file = "/var/log/uwsgi.log"
+script_folder = "{#radar_folder}/scripts"
 
 #
 # Instalando pacotes
@@ -120,6 +121,11 @@ template "#{home}/.profile" do
   owner user
   group user
   source "profile.erb"
+  variables({
+    :django_home => '#{repo_folder}/radar_parlamentar',
+    :script_folder => script_folder,
+    :venv_folder => venv_folder
+  })
 end
 
 #
@@ -345,7 +351,14 @@ end
 # Importaçao de dados
 #
 
-template "#{home}/importar_dados.sh" do
+directory "#{script_folder}" do
+  owner user
+  group user
+  mode '0775'
+  action :create
+end
+
+template "#{script_folder}/importar_dados.sh" do
   mode '777'
   owner user
   group user
@@ -359,7 +372,7 @@ end
 
 execute "importar_dados" do
   command "sh importar_dados.sh"
-  cwd "#{home}"
+  cwd "#{script_folder}"
   user user
   group user
   action :run
