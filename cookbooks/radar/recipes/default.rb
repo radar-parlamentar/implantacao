@@ -12,7 +12,7 @@ log_folder = "/var/log/radar"
 log_file = "#{log_folder}/radar.log"
 uwsgi_log_folder = "/var/log/"
 uwsgi_log_file = "/var/log/uwsgi.log"
-script_folder = "{#radar_folder}/scripts"
+script_folder = "#{radar_folder}/scripts"
 
 #
 # Instalando pacotes
