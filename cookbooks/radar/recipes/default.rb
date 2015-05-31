@@ -122,7 +122,7 @@ template "#{home}/.profile" do
   group user
   source "profile.erb"
   variables({
-    :django_home => '#{repo_folder}/radar_parlamentar',
+    :django_home => "#{repo_folder}/radar_parlamentar",
     :script_folder => script_folder,
     :venv_folder => venv_folder
   })
