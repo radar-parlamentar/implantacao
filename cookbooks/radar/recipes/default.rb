@@ -13,6 +13,7 @@ log_file = "#{log_folder}/radar.log"
 uwsgi_log_folder = "/var/log/"
 uwsgi_log_file = "/var/log/uwsgi.log"
 script_folder = "#{radar_folder}/scripts"
+cron_folder = "#{repo_folder}/radar_parlamentar/cron"
 
 #
 # Instalando pacotes
@@ -383,6 +384,7 @@ end
 #
 
 cron "cache-analises" do
+  path "#{cron_folder}:$PATH"
   action :create 
   minute '0'
   hour '1'
@@ -391,6 +393,7 @@ cron "cache-analises" do
 end
 
 cron "dump-db" do
+  path "#{cron_folder}:$PATH"
   action :create 
   minute '0'
   hour '4'
