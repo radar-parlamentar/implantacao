@@ -14,6 +14,7 @@ uwsgi_log_folder = "/var/log/"
 uwsgi_log_file = "/var/log/uwsgi.log"
 script_folder = "#{radar_folder}/scripts"
 cron_folder = "#{repo_folder}/radar_parlamentar/cron"
+dump_file = "#{repo_folder}/radar_parlamentar/static/db-dump/radar.sql"
 
 #
 # Instalando pacotes
@@ -397,8 +398,9 @@ cron "dump-db" do
   minute '0'
   hour '4'
   weekday '1'
+  shell '/bin/bash'
   user user
-  command "source ~/.profile; source dump-radar.sh >> #{log_folder}/radar-cron.log 2>>&1"
+  command "{ $SHELL #{cron_folder}/dump-radar.sh #{dump_file} } >> #{log_folder}/radar-cron.log 2>>&1"
 end
 
 
