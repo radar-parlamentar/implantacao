@@ -24,7 +24,6 @@ fi
 # Radar environtment variables
 export RADAR_HOME=<%= @django_home %>
 source $RADAR_HOME/settings/is_prod.sh
-export PATH=$PATH:$RADAR_HOME/cron
 export PATH=$PATH:<%= @script_folder %>
 source <%= @venv_folder %>/bin/activate
 
