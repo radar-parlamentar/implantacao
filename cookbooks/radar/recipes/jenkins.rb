@@ -68,6 +68,9 @@ end
 # make jenkins sudo without password
 template '/etc/sudoers' do
   source 'sudoers.erb'
+  variables ({
+    :linux_user => user
+  })
 end
 
 jenkins_command "safe-restart"

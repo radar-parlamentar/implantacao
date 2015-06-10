@@ -388,6 +388,7 @@ cron "cache-analises" do
   minute '0'
   hour '1'
   shell '/bin/bash'
+  user user
   command "{ $SHELL #{cron_folder}/clear-cache.sh && $SHELL #{cron_folder}/cache-analises.sh; } >> #{log_folder}/radar-cron.log 2>&1"
 end
 
