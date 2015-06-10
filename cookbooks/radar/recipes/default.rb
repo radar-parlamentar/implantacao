@@ -105,7 +105,7 @@ postgresql_database_user 'radar' do
 end
 
 template "#{home}/.pgpass" do
-  mode '0777'
+  mode '0600'
   owner user
   group user
   source "pgpass.erb"
@@ -400,7 +400,7 @@ cron "dump-db" do
   weekday '1'
   shell '/bin/bash'
   user user
-  command "{ $SHELL #{cron_folder}/dump-radar.sh #{dump_file} } >> #{log_folder}/radar-cron.log 2>>&1"
+  command "#{cron_folder}/dump-radar.sh #{dump_file} >> #{log_folder}/radar-cron.log 2>>&1"
 end
 
 
