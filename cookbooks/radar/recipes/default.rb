@@ -400,7 +400,7 @@ cron "dump-db" do
   weekday '1'
   shell '/bin/bash'
   user user
-  command "#{cron_folder}/dump-radar.sh #{dump_file} >> #{log_folder}/radar-cron.log 2>>&1"
+  command "#{cron_folder}/dump-radar.sh #{dump_file} >> #{log_folder}/radar-cron.log 2>&1"
 end
 
 
