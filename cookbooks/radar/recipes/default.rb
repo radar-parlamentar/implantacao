@@ -384,22 +384,20 @@ end
 #
 
 cron "cache-analises" do
-  path "#{cron_folder}:$PATH"
   action :create 
   minute '0'
   hour '1'
-  user user
-  command '{ $SHELL clear-cache.sh && $SHELL cache-analises.sh; } >> #{log_folder}/radar-cron.log 2>&1'
+  shell '/bin/bash'
+  command "{ $SHELL #{cron_folder}/clear-cache.sh && $SHELL #{cron_folder}/cache-analises.sh; } >> #{log_folder}/radar-cron.log 2>&1"
 end
 
 cron "dump-db" do
-  path "#{cron_folder}:$PATH"
   action :create 
   minute '0'
   hour '4'
   weekday '1'
   user user
-  command 'source ~/.profile; source dump-radar.sh >> #{log_folder}/radar-cron.log 2>>&1'
+  command "source ~/.profile; source dump-radar.sh >> #{log_folder}/radar-cron.log 2>>&1"
 end
 
 
