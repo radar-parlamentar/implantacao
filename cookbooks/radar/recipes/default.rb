@@ -323,6 +323,32 @@ service "celeryd" do
   action :start
 end
 
+#
+# Elastic Search
+#
+
+include_recipe "java"
+
+remote_file "#{radar_folder}" do
+  source "http://download.elastic.co/elasticsearch/elasticsearch/elasticsearch-1.5.1.zip"
+  action :create_if_missing
+  user user
+  group user
+end
+
+execute "unzip_elastic_search" do
+  command "unzip elasticsearch-1.5.1.zip"
+  cwd "#{radar_folder}"
+  user user
+  group user
+  action :run
+end
+
+service "elasticsearch" do
+  start_command "./#{radar_folder}/elasticsearch-1.5.1/bin/elasticsearch -d"
+  action :start
+end
+
 # Criar usuario para administrativo do Django (usado na importação dos dados via requisição web)
 
 template "#{repo_folder}/radar_parlamentar/create_user.py" do
