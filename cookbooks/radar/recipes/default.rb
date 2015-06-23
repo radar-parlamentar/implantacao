@@ -329,6 +329,10 @@ end
 
 include_recipe "java"
 
+package "unzip" do
+  action :install
+end
+
 remote_file "#{radar_folder}/elasticsearch.zip" do
   source "http://download.elastic.co/elasticsearch/elasticsearch/elasticsearch-1.5.1.zip"
   action :create_if_missing
