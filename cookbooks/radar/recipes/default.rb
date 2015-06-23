@@ -329,7 +329,7 @@ end
 
 include_recipe "java"
 
-remote_file "#{radar_folder}" do
+remote_file "#{radar_folder}/elasticsearch.zip" do
   source "http://download.elastic.co/elasticsearch/elasticsearch/elasticsearch-1.5.1.zip"
   action :create_if_missing
   user user
@@ -337,7 +337,7 @@ remote_file "#{radar_folder}" do
 end
 
 execute "unzip_elastic_search" do
-  command "unzip elasticsearch-1.5.1.zip"
+  command "unzip elasticsearch.zip"
   cwd "#{radar_folder}"
   user user
   group user
@@ -345,7 +345,7 @@ execute "unzip_elastic_search" do
 end
 
 service "elasticsearch" do
-  start_command "./#{radar_folder}/elasticsearch-1.5.1/bin/elasticsearch -d"
+  start_command "./#{radar_folder}/elasticsearch/bin/elasticsearch -d"
   action :start
 end
 
