@@ -2,6 +2,7 @@
 # vi: set ft=ruby :
 
 # Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
+require 'json'
 VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
@@ -10,7 +11,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # please see the online documentation at vagrantup.com.
 
   # Every Vagrant virtual environment requires a box to build off of.
-  config.vm.box = "ubuntu12.04"
+  config.vm.box = "ubuntu14"
 
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
@@ -93,19 +94,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     #  chef.data_bags_path = "../my-recipes/data_bags"
     chef.add_recipe "radar::default"
     #chef.add_role "web"
-  
-    # You may also specify custom JSON attributes:
-    chef.json = {
-      "postgresql" => {
-        "password" => { "postgres" => "123mudar" }
-      },
-      "radar" => {
-        "user" => "vagrant",
-        "linux_user" => "vagrant",
-        "database_user_password" => "123mudar"
-      }
-    }
 
+    # You may also specify custom JSON attributes:
+    chef.json = JSON.parse(File.read('node.json'))
   end
 
   # Enable provisioning with chef server, specifying the chef server URL,
