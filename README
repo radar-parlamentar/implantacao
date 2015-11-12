@@ -28,7 +28,7 @@ Implantação do Radar numa VM local (para testes na máquina do desenvolvedor)
 Para instalar o Radar em uma VM local usando o Vagrant, siga os passos abaixo:
 
 Instalar VirtualBox
-Instalar o Vagrant versão 1.7.1 (https://www.vagrantup.com/downloads.html)
+Instalar o Vagrant (https://www.vagrantup.com/downloads.html)
 Instalar o plugin vagrant-omnibus (vagrant plugin install vagrant-omnibus)
 
 Baixar imagem base:
