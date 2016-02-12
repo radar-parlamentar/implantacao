@@ -34,6 +34,8 @@ Instalar o plugin vagrant-omnibus (vagrant plugin install vagrant-omnibus)
 Baixar imagem base:
 vagrant box add ubuntu12.04 http://files.vagrantup.com/precise32.box
 
+Edite o arquivo node.json: altere o valor do atributo linux_user para "vagrant".
+
 Criar VM:
 $vagrant up
 
