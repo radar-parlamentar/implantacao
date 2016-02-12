@@ -162,6 +162,12 @@ python_pip "" do
 end
 
 directory "#{cache_folder}" do
+  # se estamos atualizando, queremos limpar o cache
+  recursive true
+  action :delete
+end
+
+directory "#{cache_folder}" do
   owner user
   group user
   mode '666'
