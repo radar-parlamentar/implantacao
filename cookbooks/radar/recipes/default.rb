@@ -439,6 +439,14 @@ cron "dump-db" do
   command "#{cron_folder}/dump-radar.sh #{dump_file} >> #{log_folder}/radar-cron.log 2>&1"
 end
 
-
+cron "importa-dados" do
+  action :create 
+  minute '0'
+  hour '2'
+  weekday '2'
+  shell '/bin/bash'
+  user user
+  command "#{script_folder}/importar_dados.sh >> #{log_folder}/radar-cron.log 2>&1"
+end
 
 
