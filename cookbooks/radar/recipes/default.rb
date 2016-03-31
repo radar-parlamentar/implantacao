@@ -347,7 +347,7 @@ remote_file "#{radar_folder}/elasticsearch-1.5.1.zip" do
 end
 
 execute "unzip_elastic_search" do
-  command "unzip elasticsearch-1.5.1.zip"
+  command "unzip -n elasticsearch-1.5.1.zip"
   cwd "#{radar_folder}"
   user user
   group user
