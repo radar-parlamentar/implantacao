@@ -433,7 +433,7 @@ cron "dump-db" do
   action :create 
   minute '0'
   hour '4'
-  weekday '1'
+  weekday '1' # segunda
   shell '/bin/bash'
   user user
   command "#{cron_folder}/dump-radar.sh #{dump_file} >> #{log_folder}/radar-cron.log 2>&1"
@@ -443,7 +443,7 @@ cron "importa-dados" do
   action :create 
   minute '0'
   hour '2'
-  weekday '2'
+  weekday '2' # terça
   shell '/bin/bash'
   user user
   command "#{script_folder}/importar_dados.sh >> #{log_folder}/radar-cron.log 2>&1"
