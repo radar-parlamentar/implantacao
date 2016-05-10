@@ -326,7 +326,7 @@ template "/etc/init.d/celeryd" do
 end
 
 service "celeryd" do
-  action :start
+  action :restart
 end
 
 #
