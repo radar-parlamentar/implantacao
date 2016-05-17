@@ -15,6 +15,7 @@ uwsgi_log_file = "/var/log/uwsgi.log"
 script_folder = "#{radar_folder}/scripts"
 cron_folder = "#{repo_folder}/radar_parlamentar/cron"
 dump_file = "#{repo_folder}/radar_parlamentar/static/db-dump/radar.sql"
+dics_folder = "#{radar_folder}/elasticsearch-1.5.1/bin/elasticsearch/config/hunspell/pt_BR"
 
 #
 # Instalando pacotes
@@ -357,6 +358,34 @@ end
 service "elasticsearch" do
   start_command "./#{radar_folder}/elasticsearch-1.5.1/bin/elasticsearch -d"
   action :start
+end
+
+directory "#{dics_folder}" do
+  owner user
+  group user
+  mode '666'
+  action :create
+end
+
+template "#{dics_folder}/pt_BR.aff" do
+  mode '0440'
+  owner user
+  group user
+  source "elastic-search-dics/pt_BR.aff.erb"
+end
+
+template "#{dics_folder}/pt_BR.dic" do
+  mode '0440'
+  owner user
+  group user
+  source "elastic-search-dics/pt_BR.dic.erb"
+end
+
+template "#{dics_folder}/settings.yml" do
+  mode '0440'
+  owner user
+  group user
+  source "elastic-search-dics/settings.yml"
 end
 
 # Criar usuario para administrativo do Django (usado na importação dos dados via requisição web)
