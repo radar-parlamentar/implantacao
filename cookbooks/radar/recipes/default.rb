@@ -15,7 +15,7 @@ uwsgi_log_file = "/var/log/uwsgi.log"
 script_folder = "#{radar_folder}/scripts"
 cron_folder = "#{repo_folder}/radar_parlamentar/cron"
 dump_file = "#{repo_folder}/radar_parlamentar/static/db-dump/radar.sql"
-dics_folder = "#{radar_folder}/elasticsearch-1.5.1/bin/elasticsearch/config/hunspell/pt_BR"
+dics_folder = "#{radar_folder}/elasticsearch-1.5.1/config/hunspell/pt_BR"
 
 #
 # Instalando pacotes
