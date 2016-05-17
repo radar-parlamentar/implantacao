@@ -386,7 +386,7 @@ template "#{dics_folder}/settings.yml" do
   mode '0440'
   owner user
   group user
-  source "elastic-search-dics/settings.yml"
+  source "elastic-search-dics/settings.yml.erb"
 end
 
 # Criar usuario para administrativo do Django (usado na importação dos dados via requisição web)
