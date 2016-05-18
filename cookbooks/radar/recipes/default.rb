@@ -363,7 +363,7 @@ end
 directory "#{dics_folder}" do
   owner user
   group user
-  mode '666'
+  mode '0775'
   recursive true
   action :create
 end
