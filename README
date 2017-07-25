@@ -46,3 +46,4 @@ $vagrant provision
 
 ==============
 
+Para restartar o Jenkins: `sudo service jenkins restart`.
